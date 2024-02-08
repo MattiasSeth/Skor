@@ -64,10 +64,8 @@ public class RepositoryCustomers {
                 String password = rs.getString("lösenord");
                 int locationId = rs.getInt("ortId");
 
-
                 int locationIndex = locationList.indexOf(locationList.stream().filter(x -> x.getId() == locationId).
                         findFirst().get());
-
 
                 Customer temp = new Customer(name,id,password,locationList.get(locationIndex));
                 customerList.add(temp);

@@ -15,8 +15,8 @@ public class CustomerDataStorage {
         customerList = repository.getCustomer();
         locationList = repository.getLocation();
 
-        locationList.forEach(x -> System.out.println(x.getName()+ " " + x.getId()));
-        customerList.forEach(x -> System.out.println(x.getLocation().getName()+ " " + x.getId() + " " + x.getPassword()));
+        //locationList.forEach(x -> System.out.println(x.getName()+ " " + x.getId()));
+        //customerList.forEach(x -> System.out.println(x.getLocation().getName()+ " " + x.getId() + " " + x.getPassword()));
     }
 
     public List<Customer> getCustomerList() {
@@ -35,7 +35,4 @@ public class CustomerDataStorage {
         this.locationList = locationList;
     }
 
-    public static void main(String[] args) {
-        CustomerDataStorage c = new CustomerDataStorage();
-    }
 }

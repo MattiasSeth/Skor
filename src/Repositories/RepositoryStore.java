@@ -118,4 +118,26 @@ public class RepositoryStore {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean addToCart(int kundId, int kundOrderId, int lagerId){
+
+        try (Connection con = DriverManager.getConnection(
+                p.getProperty("connectionString"),
+                p.getProperty("name"),
+                p.getProperty("password"));
+
+             CallableStatement stmt = con.prepareCall("call addToCart(?,?,?)")){
+
+            stmt.setInt(1, kundId);
+            stmt.setInt(2, kundOrderId);
+            stmt.setInt(3,lagerId);
+            boolean result = stmt.execute();
+
+            return result;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

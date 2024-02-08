@@ -22,7 +22,7 @@ public class ShoeDataStorage {
         shoeCategoriesList = repositoryShoes.getShoeCategories();
         sizeList = repositoryShoes.getSize();
 
-
+        /*
         brandList.forEach(x -> System.out.println(x.getName()+ " " + x.getId()));
         categoryList.forEach(x -> System.out.println(x.getName()+ " " + x.getId()));
         colorsList.forEach(x -> System.out.println(x.getName()+ " " + x.getId()));
@@ -31,6 +31,8 @@ public class ShoeDataStorage {
         shoeCategoriesList.forEach(x -> System.out.println(x.getCategory().getName() + " " + x.getShoe().getBrand().getName() +" " +
                 x.getShoe().getShoecolor().getName() + " " + x.getShoe().getPrice() + " " + x.getShoe().getSize().getValue()));
         sizeList.forEach(x -> System.out.println(x.getValue()+ " " + x.getId()));
+
+         */
 
     }
 
@@ -82,8 +84,4 @@ public class ShoeDataStorage {
         this.sizeList = sizeList;
     }
 
-    public static void main(String[] args) {
-        ShoeDataStorage s = new ShoeDataStorage();
-
-    }
 }

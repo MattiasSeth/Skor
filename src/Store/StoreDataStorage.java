@@ -27,7 +27,31 @@ public class StoreDataStorage {
          */
     }
 
+    public List<InStock> getInStockList() {
+        return inStockList;
+    }
+
+    public void setInStockList(List<InStock> inStockList) {
+        this.inStockList = inStockList;
+    }
+
+    public List<CustomerOrder> getCustomerOrderList() {
+        return customerOrderList;
+    }
+
+    public void setCustomerOrderList(List<CustomerOrder> customerOrderList) {
+        this.customerOrderList = customerOrderList;
+    }
+
+    public List<AllOrders> getAllOrdersList() {
+        return allOrdersList;
+    }
+
+    public void setAllOrdersList(List<AllOrders> allOrdersList) {
+        this.allOrdersList = allOrdersList;
+    }
+
     public static void main(String[] args) {
-        StoreDataStorage s = new StoreDataStorage();
+
     }
 }
