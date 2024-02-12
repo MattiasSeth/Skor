@@ -9,6 +9,7 @@ import Store.StoreDataStorage;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -49,8 +50,17 @@ public class runShop {
             if(checkUsername && checkPassword){
                 userId = customerList.stream().filter(x -> x.getName().equalsIgnoreCase(tempUsername))
                         .findFirst().get().getId();
-                userOrderId = customerOrders.stream().filter(y -> y.getCustomer().getId() == userId).findFirst().get().getId();
-                break;
+                try{
+                    userOrderId = customerOrders.stream().filter(y -> y.getCustomer().getId() == userId).findFirst().get().getId();
+                    break;
+                }catch (NoSuchElementException s){
+                    userOrderId = customerOrders.stream()
+                            .mapToInt(CustomerOrder::getId)
+                            .max()
+                            .orElse(-1) + 1;;
+                    break;
+                }
+
             } else
                 System.out.println("Fel användarnamn eller lösenord");
         }
@@ -75,11 +85,16 @@ public class runShop {
                         " Price: " + inStock.getShoe().getPrice() + "Kr");
             });
         });
+        int shoeId;
 
-        System.out.println("Ange numret på den sko du vill ha (1-" +shoesInStock.size()+"):" );
-        String temp = sc.nextLine();
-        int shoeId = Integer.parseInt(temp);
+        while (true) {
+            System.out.println("Ange numret på den sko du vill ha (1-" + shoesInStock.size() + "):");
+            String temp = sc.nextLine();
+            shoeId = Integer.parseInt(temp);
 
+            if(shoeId <=shoesInStock.size())
+                break;
+        }
         RepositoryStore repoStore = new RepositoryStore();
         boolean result = repoStore.addToCart(userId,userOrderId,shoeId);
 
